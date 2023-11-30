@@ -603,8 +603,8 @@ GameObject:
   - component: {fileID: 289505101}
   - component: {fileID: 289505107}
   - component: {fileID: 289505106}
-  - component: {fileID: 289505105}
   - component: {fileID: 289505108}
+  - component: {fileID: 289505109}
   m_Layer: 0
   m_Name: Platform
   m_TagString: Untagged
@@ -701,19 +701,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
---- !u!114 &289505105
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 289505100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c4c03b6751572f448adccb7e330498f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Torque: 200
 --- !u!153 &289505106
 ConfigurableJoint:
   m_ObjectHideFlags: 0
@@ -855,9 +842,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: d12e66d8025b18a43b8d6807caf8b8e2,
+  m_Actions: {fileID: -944628639613478452, guid: 00e270246acfe62449acd3d5ebf53211,
     type: 3}
-  m_NotificationBehavior: 2
+  m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -870,74 +857,28 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 289505105}
-        m_TargetAssemblyTypeName: PlatformRotating, Assembly-CSharp
-        m_MethodName: Back
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 8fccdc8f-663b-47ee-9f55-2b2c536c409d
-    m_ActionName: Stick/BacknForth[/XInputControllerWindows/leftStick/up,/XInputControllerWindows/leftStick/down]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 289505105}
-        m_TargetAssemblyTypeName: PlatformRotating, Assembly-CSharp
-        m_MethodName: left
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 34e01c12-1593-47a5-b927-0879bc951a3f
-    m_ActionName: Stick/LeftnRight[/XInputControllerWindows/leftStick/left,/XInputControllerWindows/leftStick/right]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 289505105}
-        m_TargetAssemblyTypeName: PlatformRotating, Assembly-CSharp
-        m_MethodName: Forward
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 50ca4a45-41bd-4e02-a50f-adc9b1d436e6
-    m_ActionName: Stick/Forward[/XInputControllerWindows/leftStick/up]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 289505105}
-        m_TargetAssemblyTypeName: PlatformRotating, Assembly-CSharp
-        m_MethodName: Right
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 0c2baf13-83af-4e51-8588-c49b2d727869
-    m_ActionName: Stick/Right[/XInputControllerWindows/leftStick/right]
+      m_Calls: []
+    m_ActionId: a08d182c-6936-403c-88d7-8ffe464c5d33
+    m_ActionName: Platform/Move[/XInputControllerWindows/leftStick]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Stick
+  m_DefaultActionMap: Platform
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &289505109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 289505100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c4c03b6751572f448adccb7e330498f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RotateSpeed: 200
+  Torque: 50
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -3892,7 +3833,7 @@ MonoBehaviour:
   - {fileID: 2831642727846279676, guid: acde16ce8ae7cd7478a0f86484916918, type: 3}
   - {fileID: 3302075445398599634, guid: 02dc8a0cc6f16194da7c5bf7e21d255e, type: 3}
   Player: {fileID: 1601600724}
-  ShootSpeed: 30
+  ShootSpeed: 50
   curTime: 1
   NextSpawn: 1
 --- !u!4 &1594031885

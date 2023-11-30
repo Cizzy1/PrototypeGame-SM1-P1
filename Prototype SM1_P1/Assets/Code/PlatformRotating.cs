@@ -6,17 +6,12 @@ using UnityEngine.InputSystem;
 
 public class PlatformRotating : MonoBehaviour
 {
-    //public float RotateSpeed;
+    public float RotateSpeed;
     Rigidbody rb;
     public float Torque;
 
-    PlayerControls controls;
+    private Vector2 moveInputValue;
 
-    void Awake(){
-        controls = new PlayerControls();
-
-        controls.Gameplay.Movement.performed += ctx => rotate();
-    }
 
 
     // Start is called before the first frame update
@@ -28,7 +23,9 @@ public class PlatformRotating : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {   
-        if(Input.GetKey(KeyCode.A)){
+        MoveLog();
+
+        /* if(Input.GetKey(KeyCode.A)){
             //transform.Rotate(Vector3.right * RotateSpeed * Time.deltaTime);
             rb.AddTorque(transform.right * Torque);
         }
@@ -38,29 +35,31 @@ public class PlatformRotating : MonoBehaviour
             rb.AddTorque(-transform.right * Torque);
         }
 
-        if(Input.GetKey(KeyCode.W)){
+        if(Input.GetKey(KeyCode.W) or Gamepad.current.LeftStick)
+        {
             //transform.Rotate(Vector3.forward * RotateSpeed * Time.deltaTime);
             rb.AddTorque(transform.forward * Torque);
         }
 
-        if(Input.GetKey(KeyCode.S)){
+        if(Input.GetKey(KeyCode.S))
+        {
             //transform.Rotate(Vector3.back * RotateSpeed * Time.deltaTime);
             rb.AddTorque(-transform.forward * Torque);
            
-        }
+        } */
     }
 
-    void rotate(){
-        rb.AddTorque(transform.forward * Torque)''
+    private void OnMove(InputValue value)
+    {
+        moveInputValue = value.Get<Vector2>();
+        Debug.Log(moveInputValue);
     }
 
-    void OnEnable(){
-        controls.Gameplay.Enable();
-    }
+    private void MoveLog(){
+        Vector3 result = new Vector3(moveInputValue.x,0f,moveInputValue.y ) * RotateSpeed * Time.fixedDeltaTime;
+        rb.velocity = -result;
 
-    void OnDisable(){
-        controls.Gameplay.Disable();
-    }
-
-    
+        /* float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        rb.rotation = Quaternion.Euler(new Vector3(0, 0, angle)); */
+    }    
 }
