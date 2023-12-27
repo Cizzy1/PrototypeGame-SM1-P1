@@ -1,16 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlatformRotating : MonoBehaviour
 {
-    public float RotateSpeed;
+    
+    public float ControllerSpeed;
+    public float KBMSpeed;
+
     Rigidbody rb;
-    public float Torque;
+
 
     private Vector2 moveInputValue;
+    private Vector3 rotateDir;
 
 
 
@@ -24,30 +27,8 @@ public class PlatformRotating : MonoBehaviour
     void FixedUpdate()
     {   
         MoveLog();
-
-        /* if(Input.GetKey(KeyCode.A)){
-            //transform.Rotate(Vector3.right * RotateSpeed * Time.deltaTime);
-            rb.AddTorque(transform.right * Torque);
-        }
-
-        if(Input.GetKey(KeyCode.D)){
-            //transform.Rotate(Vector3.left * RotateSpeed * Time.deltaTime);
-            rb.AddTorque(-transform.right * Torque);
-        }
-
-        if(Input.GetKey(KeyCode.W) or Gamepad.current.LeftStick)
-        {
-            //transform.Rotate(Vector3.forward * RotateSpeed * Time.deltaTime);
-            rb.AddTorque(transform.forward * Torque);
-        }
-
-        if(Input.GetKey(KeyCode.S))
-        {
-            //transform.Rotate(Vector3.back * RotateSpeed * Time.deltaTime);
-            rb.AddTorque(-transform.forward * Torque);
-           
-        } */
     }
+
 
     private void OnMove(InputValue value)
     {
@@ -56,10 +37,7 @@ public class PlatformRotating : MonoBehaviour
     }
 
     private void MoveLog(){
-        Vector3 result = new Vector3(moveInputValue.x,0f,moveInputValue.y ) * RotateSpeed * Time.fixedDeltaTime;
-        rb.velocity = -result;
-
-        /* float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        rb.rotation = Quaternion.Euler(new Vector3(0, 0, angle)); */
-    }    
+        Vector3 result = new Vector3(moveInputValue.y,0f, -moveInputValue.x) * ControllerSpeed * Time.fixedDeltaTime;
+        rb.AddTorque(result);
+    }
 }

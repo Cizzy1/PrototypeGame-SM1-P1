@@ -8,7 +8,6 @@ public class RandomObject : MonoBehaviour
     public GameObject[] RandomObjects;
     public Transform Player;
 
-    public float ShootSpeed = 30;
     public float curTime;
     public float NextSpawn;
 
